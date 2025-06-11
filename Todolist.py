@@ -6,13 +6,12 @@ st.title("To-Do List ✅")
 if "tasks" not in st.session_state:
     st.session_state.tasks = []
 
-# Input to add a new task
+# Input to add new task
 task = st.text_input("Enter your task")
 
 if st.button("Add Task"):
     if task:
         st.session_state.tasks.append({"task": task, "done": False})
-        st.experimental_rerun()
     else:
         st.warning("Please enter a task.")
 
