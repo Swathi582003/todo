@@ -15,9 +15,10 @@ if st.button("Add Task"):
     else:
         st.warning("Please enter a task.")
 
-# Display and manage tasks
-for i in range(len(st.session_state.tasks)):
-    item = st.session_state.tasks[i]
+# Safely loop over a copy of the list to allow changes
+tasks_copy = st.session_state.tasks.copy()
+
+for i, item in enumerate(tasks_copy):
     col1, col2, col3 = st.columns([6, 1, 1])
 
     with col1:
