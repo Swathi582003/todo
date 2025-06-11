@@ -2,25 +2,25 @@ import streamlit as st
 
 st.title("To-Do List ✅")
 
-# Initialize task list in session
+# Initialize task list
 if "tasks" not in st.session_state:
     st.session_state.tasks = []
 
-# Input field for adding a new task
+# Input to add a new task
 task = st.text_input("Enter your task")
 
-# Add button logic
 if st.button("Add Task"):
     if task:
         st.session_state.tasks.append({"task": task, "done": False})
+        st.experimental_rerun()
     else:
         st.warning("Please enter a task.")
 
-# Display the list of tasks with buttons
+# Display and manage tasks
 for i in range(len(st.session_state.tasks)):
     item = st.session_state.tasks[i]
     col1, col2, col3 = st.columns([6, 1, 1])
-    
+
     with col1:
         st.markdown(f"{'✔️ ' if item['done'] else ''}{item['task']}")
 
