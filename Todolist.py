@@ -33,3 +33,5 @@ for i, item in enumerate(tasks_copy):
         if st.button("🗑️", key=f"del{i}"):
             st.session_state.tasks.pop(i)
             st.experimental_rerun()
+
+# END
